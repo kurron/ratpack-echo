@@ -16,6 +16,7 @@
 package org.kurron.example
 
 import groovy.json.JsonBuilder
+import java.time.LocalDateTime
 import java.util.concurrent.ThreadLocalRandom
 import ratpack.groovy.Groovy
 import ratpack.server.RatpackServer
@@ -35,8 +36,9 @@ class MainGroovy {
                     def builder = new JsonBuilder()
                     builder.info {
                         instance instanceID
+                        now LocalDateTime.now().toString()
                         addresses.eachWithIndex { address, index ->
-                            "address-${index}"  address
+                            "ip-${index}"  address
                         }
                     }
                     render builder.toPrettyString()
