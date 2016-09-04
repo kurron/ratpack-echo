@@ -52,6 +52,8 @@ apply from: "$rootDir/gradle/bintray.gradle"
 apply from: "$rootDir/gradle/codenarc.gradle"
 apply from: "$rootDir/gradle/jacoco.gradle"
 
+apply plugin: 'io.ratpack.ratpack-groovy'
+
 dependencies {
     compile "org.codehaus.groovy:groovy-all:${groovyVersion}:indy"
     compile "org.kurron:tools-groovy:${toolsGroovyVersion}"
