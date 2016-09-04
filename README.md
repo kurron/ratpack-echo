@@ -1,5 +1,5 @@
 # Overview
-This project is a template project that will quickly get you set up with a Spring Boot REST service.
+This project is a ...
 
 # Prerequisites
 * [JDK 8](http://www.oracle.com/technetwork/java/index.html) installed and working

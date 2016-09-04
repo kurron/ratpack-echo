@@ -14,27 +14,11 @@
  * limitations under the License.
  */
 
-buildscript {
-    repositories {
-        maven {
-            url = artifactory
-        }
-    }
-    dependencies {
-        classpath "io.spring.gradle:dependency-management-plugin:${dependencyPluginVersion}"
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
-    }
-}
-
-plugins {
-    id "org.asciidoctor.convert" version "1.5.3"
-}
-
 plugins {
     id "com.jfrog.bintray" version "1.7.1"
 }
 
-description = 'Bare bones example REST micro-service'
+description = 'Quick starting JVM web application that is helpful in showcasing load balanced microservices.'
 group = 'org.kurron.example'
 ext.builtOn = new Date()
 
@@ -48,27 +32,6 @@ apply plugin: 'build-announcements'
 apply from: "$rootDir/gradle/repositories.gradle"
 apply from: "$rootDir/gradle/version.gradle"
 apply from: "$rootDir/gradle/groovy.gradle"
-apply from: "$rootDir/gradle/io-platform.gradle"
-apply from: "$rootDir/gradle/boot.gradle"
-apply from: "$rootDir/gradle/core.gradle"
-apply from: "$rootDir/gradle/web.gradle"
-//apply from: "$rootDir/gradle/sql.gradle"
-//apply from: "$rootDir/gradle/nosql.gradle"
-//apply from: "$rootDir/gradle/cloud-core.gradle"
-apply from: "$rootDir/gradle/cloud-config.gradle"
-apply from: "$rootDir/gradle/cloud-discovery.gradle"
-//apply from: "$rootDir/gradle/cloud-routing.gradle"
-//apply from: "$rootDir/gradle/cloud-circuit-breaker.gradle"
-//apply from: "$rootDir/gradle/cloud-tracing.gradle"
-//apply from: "$rootDir/gradle/cloud-messaging.gradle"
-//apply from: "$rootDir/gradle/cloud-aws.gradle"
-//apply from: "$rootDir/gradle/cloud-cluster.gradle"
-//apply from: "$rootDir/gradle/cloud-metrics.gradle"
-//apply from: "$rootDir/gradle/cloud-contract.gradle"
-//apply from: "$rootDir/gradle/social.gradle"
-apply from: "$rootDir/gradle/io.gradle"
-apply from: "$rootDir/gradle/ops.gradle"
-apply from: "$rootDir/gradle/template-engines.gradle"
 apply from: "$rootDir/gradle/maven-publish.gradle"
 apply from: "$rootDir/gradle/spock.gradle"
 apply from: "$rootDir/gradle/dependency-exclusions.gradle"
@@ -78,11 +41,11 @@ apply from: "$rootDir/gradle/docker.gradle"
 apply from: "$rootDir/gradle/bintray.gradle"
 apply from: "$rootDir/gradle/codenarc.gradle"
 apply from: "$rootDir/gradle/jacoco.gradle"
-apply from: "$rootDir/gradle/jackson.gradle"
 
 dependencies {
     compile "org.codehaus.groovy:groovy-all:${groovyVersion}:indy"
     compile "org.kurron:tools-groovy:${toolsGroovyVersion}"
+    compile "io.ratpack:ratpack-groovy:${ratpackVersion}"
 
     runtime "net.logstash.logback:logstash-logback-encoder:${logstashLogbackVersion}"
 }

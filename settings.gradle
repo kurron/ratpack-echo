@@ -14,4 +14,4 @@
  * limitations under the License.
  */
 
-rootProject.name = 'jvm-guy-spring-boot-project'
+rootProject.name = 'ratpack-echo'
