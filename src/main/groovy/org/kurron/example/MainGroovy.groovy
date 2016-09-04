@@ -26,12 +26,18 @@ import ratpack.server.RatpackServer
 class MainGroovy {
     static void main( String[] args ) {
         def instanceID = Integer.toHexString( ThreadLocalRandom.current().nextInt( Integer.MAX_VALUE ) ).toUpperCase()
+        def addresses = NetworkInterface.networkInterfaces.findAll { it.up }.collectMany { NetworkInterface nic ->
+            nic.inetAddresses.collect { it.hostAddress }
+        }
         RatpackServer.start { spec ->
             spec.handlers( Groovy.chain {
                 get {
                     def builder = new JsonBuilder()
                     builder.info {
                         instance instanceID
+                        addresses.eachWithIndex { address, index ->
+                            "address-${index}"  address
+                        }
                     }
                     render builder.toPrettyString()
                 }
