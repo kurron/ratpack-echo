@@ -14,6 +14,14 @@
  * limitations under the License.
  */
 
+buildscript {
+    repositories {
+        maven {
+            url = artifactory
+        }
+    }
+}
+
 plugins {
     id "com.jfrog.bintray" version "1.7.1"
 }
@@ -37,7 +45,6 @@ apply from: "$rootDir/gradle/spock.gradle"
 apply from: "$rootDir/gradle/dependency-exclusions.gradle"
 apply from: "$rootDir/gradle/conflicts.gradle"
 apply from: "$rootDir/gradle/cucumber.gradle"
-apply from: "$rootDir/gradle/docker.gradle"
 apply from: "$rootDir/gradle/bintray.gradle"
 apply from: "$rootDir/gradle/codenarc.gradle"
 apply from: "$rootDir/gradle/jacoco.gradle"
@@ -53,22 +60,11 @@ dependencies {
 defaultTasks << 'clean'
 defaultTasks << 'build'
 
-if ( 'true' == runIntegrationTests ) {
-    defaultTasks += ['outboundIntegrationTests', 'inboundIntegrationTests', 'acceptanceTests']
-    // make sure we deploy the docker container before running integration/acceptance tests
-    [acceptanceTests]*.dependsOn launchContainer
-    // make sure the docker image is cleaned up
-    [acceptanceTests]*.finalizedBy deleteDockerImage
-}
-
 // only publish artifacts if publishArtifacts is true, and the branch is either master or development
 if ( 'true' == publishArtifacts && branch in ['master', 'development'] ) {
     // only use this if you decide not to use the Bintray plugin
     // defaultTasks << 'publish'
     defaultTasks << 'bintrayUpload'
-    defaultTasks << 'publishDockerImage'
-    // ensures that deleteDockerImage will not be executed until we publish, unless a failure occurs prior to publishing
-    publishDockerImage.finalizedBy deleteDockerImage
 }
 else {
     defaultTasks << 'publishToMavenLocal'
