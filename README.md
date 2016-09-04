@@ -1,83 +1,53 @@
 # Overview
-This project is a ...
+This project creates a quick and dirty Ratpack based microservice that spits back all know interfaces as well as a unique identifier of
+the instance.  The intent of this service is to help showcase/diagnose load balanced microservices.  Hitting different endpoints with a
+simple HTTP GET should tell you which instance you are being balanced to.
 
 # Prerequisites
 * [JDK 8](http://www.oracle.com/technetwork/java/index.html) installed and working
-* [Lazybones](https://github.com/pledbrook/lazybones) and working.  Using [SDKMAN!](http://sdkman.io/) is the easiest way to install it.
-* TODO: discuss access private template area
 
 # Building
-This project is a collection of text files that Lazybones copies around so there is nothing to build.
+Type `./gradlew` will assemble an executable JAR file that can be dropped into a Docker container for testing.
 
 # Installation
-Type `lazybones list` and make sure the `jvm-guy-spring-boot-project` is available.  Assuming you want to create 
-a new project named `sample` in the `/tmp` directory, you would type `lazybones create jvm-guy-spring-boot-project /tmp/sample`.
+The project simply creates the artifact.  It is up to you to install it somewhere, such as a Docker container.
 
 # Tips and Tricks
 
-## What Is Provided
-TODO
+## Launching the Application
+For quick testing, try `./gradlew run` and watch the log messages.  It will tell you what port the application is bound to.
+When you are done, hit `ctrl-c` to shutdown the application.
 
-## Migrating The Template
-TODO
+You can also run it as an executable JAR.  Try `$JAVA_HOME/bin/java -jar build/libs/ratpack-echo-1.0.0.RELEASE-all.jar`.  This should
+launch the application.
 
-------------
+## Testing the Application
+By default, the application is bound to port 5050 so you can hit it with a web browser or command-line HTTP client. Here is an example
+using the very convenient [HTTPie](https://github.com/jkbrzt/httpie) tool:
 
-# Overview
-This project ...
+```
+http localhost:5050
 
-# Prerequisites
-* [JDK 8](http://www.oracle.com/technetwork/java/index.html) installed and working
-* Building under [Ubuntu Linux](http://www.ubuntu.com/) is supported and recommended 
+HTTP/1.1 200 OK
+content-encoding: gzip
+content-type: text/plain;charset=UTF-8
+transfer-encoding: chunked
 
-# Building
-Type `./gradlew` to build and assemble the service.
-
-# Installation
-TODO
-
-# Tips and Tricks
-
-## Verifying The Setup
-TODO
-
-## Running Integration Tests From Gradle
-TODO
-
-## Running Acceptance Tests From Gradle
-TODO
-
-## Running Acceptance Tests From IDEA
-TODO
-
-## Operations Endpoints
-The services supports a variety of endpoints useful to an Operations engineer.
-
-* /operations - Provides a hypermedia-based “discovery page” for the other endpoints.
-* /operations/autoconfig - Displays an auto-configuration report showing all auto-configuration candidates and the reason why they ‘were’ or ‘were not’ applied.
-* /operations/beans - Displays a complete list of all the Spring beans in your application.
-* /operations/configprops - Displays a collated list of all `@ConfigurationProperties`.
-* /operations/dump - Performs a thread dump.
-* /operations/env - Exposes properties from Spring’s `ConfigurableEnvironment`.
-* /operations/flyway - Shows any `Flyway` database migrations that have been applied.
-* /operations/health - Shows application health information.
-* /operations/info - Displays arbitrary application info.
-* /operations/liquibase - Shows any `Liquibase` database migrations that have been applied.
-* /operations/logfile - Returns the contents of the logfile (if logging.file or logging.path properties have been set).
-* /operations/metrics - Shows ‘metrics’ information for the current application.
-* /operations/mappings - Displays a collated list of all `@RequestMapping` paths.
-* /operations/shutdown - Allows the application to be gracefully shutdown (not enabled by default).
-* /operations/trace - Displays trace information (by default the last few HTTP requests).
-
-## REST API Documentation
-You can find the current API documentation at `/docs/index.hml`.
+{
+    "info": {
+        "instance": "6E16CFB8",
+        "ip-0": "fe80:0:0:0:a00:27ff:fe8f:6fd2%enp0s3",
+        "ip-1": "10.0.2.15",
+        "ip-2": "0:0:0:0:0:0:0:1%lo",
+        "ip-3": "127.0.0.1",
+        "now": "2016-09-04T13:49:57.357"
+    }
+}
+```
 
 # Troubleshooting
-
 TODO
 
 # License and Credits
 This project is licensed under the [Apache License Version 2.0, January 2004](http://www.apache.org/licenses/).
-
-# List of Changes
 
