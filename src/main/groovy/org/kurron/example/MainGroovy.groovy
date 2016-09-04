@@ -15,6 +15,8 @@
  */
 package org.kurron.example
 
+import groovy.json.JsonBuilder
+import java.util.concurrent.ThreadLocalRandom
 import ratpack.groovy.Groovy
 import ratpack.server.RatpackServer
 
@@ -23,10 +25,15 @@ import ratpack.server.RatpackServer
  **/
 class MainGroovy {
     static void main( String[] args ) {
+        def instanceID = Integer.toHexString( ThreadLocalRandom.current().nextInt( Integer.MAX_VALUE ) ).toUpperCase()
         RatpackServer.start { spec ->
             spec.handlers( Groovy.chain {
                 get {
-                    render 'Hello from Groovy Main!'
+                    def builder = new JsonBuilder()
+                    builder.info {
+                        instance instanceID
+                    }
+                    render builder.toPrettyString()
                 }
             } )
         }
