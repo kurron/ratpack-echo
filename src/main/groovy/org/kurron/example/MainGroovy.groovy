@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.kurron.example
 
 import ratpack.groovy.Groovy
@@ -23,7 +22,7 @@ import ratpack.server.RatpackServer
  * Ratpack entry point.
  **/
 class MainGroovy {
-    public static void main( String[] args ) {
+    static void main( String[] args ) {
         RatpackServer.start { spec ->
             spec.handlers( Groovy.chain {
                 get {
