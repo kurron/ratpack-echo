@@ -20,6 +20,9 @@ buildscript {
             url = artifactory
         }
     }
+    dependencies {
+        classpath "io.ratpack:ratpack-gradle:${ratpackVersion}"
+    }
 }
 
 plugins {
