@@ -49,7 +49,6 @@ apply from: "$rootDir/gradle/dependency-exclusions.gradle"
 apply from: "$rootDir/gradle/conflicts.gradle"
 apply from: "$rootDir/gradle/bintray.gradle"
 apply from: "$rootDir/gradle/codenarc.gradle"
-apply from: "$rootDir/gradle/jacoco.gradle"
 
 apply plugin: 'io.ratpack.ratpack-groovy'
 apply plugin: 'com.github.johnrengelman.shadow'
