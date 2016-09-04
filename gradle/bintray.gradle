@@ -22,8 +22,8 @@ bintray {
         repo = 'maven'
         name = "${project.name}"
         licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/kurron/spring-configuration-server.git'
-        labels = ['spring', 'spring-cloud', 'microservices']
+        vcsUrl = 'https://github.com/kurron/ratpack-echo.git'
+        labels = ['ratpack', 'load balance', 'microservices']
         publicDownloadNumbers = true
         attributes= ['a': ['ay1', 'ay2'], 'b': ['bee'], c: 'cee']
         version {
