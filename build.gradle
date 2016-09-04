@@ -44,7 +44,6 @@ apply plugin: 'build-announcements'
 apply from: "$rootDir/gradle/repositories.gradle"
 apply from: "$rootDir/gradle/version.gradle"
 apply from: "$rootDir/gradle/groovy.gradle"
-apply from: "$rootDir/gradle/maven-publish.gradle"
 apply from: "$rootDir/gradle/dependency-exclusions.gradle"
 apply from: "$rootDir/gradle/bintray.gradle"
 apply from: "$rootDir/gradle/codenarc.gradle"
@@ -67,11 +66,6 @@ defaultTasks << 'shadowJar'
 
 // only publish artifacts if publishArtifacts is true, and the branch is either master or development
 if ( 'true' == publishArtifacts && branch in ['master', 'development'] ) {
-    // only use this if you decide not to use the Bintray plugin
-    // defaultTasks << 'publish'
     defaultTasks << 'bintrayUpload'
-}
-else {
-    defaultTasks << 'publishToMavenLocal'
 }
 
