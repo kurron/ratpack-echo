@@ -15,9 +15,11 @@
  */
 apply plugin: 'groovy'
 
+/*
 compileGroovy {
     groovyOptions.configurationScript = file( "$rootDir/gradle/groovyCompilerConfiguration.groovy" )
 }
+*/
 
 compileGroovy.groovyOptions.optimizationOptions['indy'] = true
 compileTestGroovy.groovyOptions.optimizationOptions['indy'] = true

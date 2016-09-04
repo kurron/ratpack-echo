@@ -54,6 +54,8 @@ apply from: "$rootDir/gradle/jacoco.gradle"
 
 apply plugin: 'io.ratpack.ratpack-groovy'
 
+mainClassName = 'org.kurron.example.MainGroovy'
+
 dependencies {
     compile "org.codehaus.groovy:groovy-all:${groovyVersion}:indy"
     compile "org.kurron:tools-groovy:${toolsGroovyVersion}"
