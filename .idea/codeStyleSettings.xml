@@ -195,9 +195,6 @@
         <codeStyleSettings language="JSON">
           <option name="KEEP_LINE_BREAKS" value="false" />
           <option name="PARENT_SETTINGS_INSTALLED" value="true" />
-          <indentOptions>
-            <option name="INDENT_SIZE" value="4" />
-          </indentOptions>
         </codeStyleSettings>
         <codeStyleSettings language="JavaScript">
           <option name="KEEP_LINE_BREAKS" value="false" />

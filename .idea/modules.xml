@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jvm-guy-spring-boot-project.iml" filepath="$PROJECT_DIR$/.idea/modules/jvm-guy-spring-boot-project.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jvm-guy-spring-boot-project_main.iml" filepath="$PROJECT_DIR$/.idea/modules/jvm-guy-spring-boot-project_main.iml" group="jvm-guy-spring-boot-project" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jvm-guy-spring-boot-project_test.iml" filepath="$PROJECT_DIR$/.idea/modules/jvm-guy-spring-boot-project_test.iml" group="jvm-guy-spring-boot-project" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ratpack-echo.iml" filepath="$PROJECT_DIR$/.idea/modules/ratpack-echo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ratpack-echo_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ratpack-echo_main.iml" group="ratpack-echo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ratpack-echo_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ratpack-echo_test.iml" group="ratpack-echo" />
     </modules>
   </component>
 </project>

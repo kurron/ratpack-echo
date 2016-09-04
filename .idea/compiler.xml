@@ -19,8 +19,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="jvm-guy-spring-boot-project_main" target="1.8" />
-      <module name="jvm-guy-spring-boot-project_test" target="1.8" />
+      <module name="ratpack-echo_main" target="1.8" />
+      <module name="ratpack-echo_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
