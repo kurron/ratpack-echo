@@ -30,20 +30,21 @@ class MainGroovy {
         def addresses = NetworkInterface.networkInterfaces.findAll { it.up }.collectMany { NetworkInterface nic ->
             nic.inetAddresses.collect { it.hostAddress }
         }
-        RatpackServer.start { spec ->
-            spec.handlers( Groovy.chain {
-                get {
-                    def builder = new JsonBuilder()
-                    builder.info {
-                        instance instanceID
-                        now LocalDateTime.now().toString()
-                        addresses.eachWithIndex { address, index ->
-                            "ip-${index}"  address
-                        }
+        def handlers= Groovy.chain {
+            get {
+                def builder = new JsonBuilder()
+                builder.info {
+                    instance instanceID
+                    now LocalDateTime.now().toString()
+                    addresses.eachWithIndex { address, index ->
+                        "ip-${index}"  address
                     }
-                    render builder.toPrettyString()
                 }
-            } )
+                render builder.toPrettyString()
+            }
+        }
+        RatpackServer.start { spec ->
+            spec.handlers( handlers )
         }
     }
 }
